@@ -1,0 +1,138 @@
+.form {
+  background-color: var(--gray);
+  padding: 120px 350px;
+}
+
+.form-title {
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 62px;
+  margin-bottom: 24px;
+}
+
+.form-description {
+  color: var(--text-gray);
+  font-size: 20px;
+  line-height: 25px;
+  margin-bottom: 80px;
+}
+
+.form-contacts__title {
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 36px;
+  margin-bottom: 16px;
+}
+
+.form-contacts__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 32px;
+  margin-bottom: 48px;
+}
+
+.form-input-box, .form-name, .form-mail, .form-phone-number, .form-company-name{
+  max-width: 544px;
+  width: 100%;
+  height: 58px;
+}
+
+.form-name, .form-mail, .form-phone-number, .form-company-name{
+  padding: 0 24px;
+}
+
+.form-input-box {
+  position: relative;
+}
+
+.form-star {
+  position: absolute;
+  top: 13px;
+  right: 24px;
+  width: 10px;
+  height: 30px;
+}
+
+.form-name::placeholder, .form-mail::placeholder, .form-phone-number::placeholder, .form-company-name::placeholder {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 30px;
+  color: var(--black);
+}
+
+.form-project__title{
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 36px;
+  margin-bottom: 16px;
+}
+
+.form-project__select {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.form-check {
+  cursor: pointer;
+}
+
+.form-checkbox {
+  -webkit-appearance: none;
+}
+
+.form-check-box {
+  color: var(--text-gray);
+  border: 1px solid var(--text-gray);
+  border-radius: 4px;
+  height: 40px;
+  padding: 8px 12px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.form-checkbox:checked + .form-check-box {
+  background-color: var(--green);
+  color: var(--black);
+  background-image: url("../assets/cross.svg");
+  background-repeat: no-repeat;
+  background-position: right center;
+  padding-right: 30px;
+  border: none;
+}
+
+.form-project__description {
+  background-color: var(--white);
+  height: 120px;
+  width: 1120px;
+  padding: 16px 24px 74px 24px;
+  margin-bottom: 48px;
+}
+
+.form-project__description::placeholder {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+  color: var(--black);
+}
+
+.form-button__wrapper{
+  width: 1120px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.form-button{
+  width: 188px;
+  height: 56px;
+  background-color: var(--green);
+  border-radius: 4px;
+  padding: 15px 40px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+  cursor: pointer;
+  border: none;
+}
