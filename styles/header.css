@@ -33,3 +33,7 @@ header {
   transform: scaleX(0);
   transition: transform .2s;
 }
+
+.active::before {
+  transform: scaleX(1);
+}
