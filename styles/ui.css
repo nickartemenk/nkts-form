@@ -10,10 +10,12 @@
   font-weight: 700;
   line-height: 26px;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .form-button:hover {
   background-color: var(--green);
   border: 1px solid transparent;
   color: var(--black);
+  transition: all 0.3s ease;
 }
