@@ -6,7 +6,7 @@ body {
   max-width: 1120px;
   width: 100%;
   margin: 0 auto;
-  padding: 120px 0 120px 0;
+  padding: 120px 0;
 }
 
 .form-title {
@@ -100,6 +100,10 @@ body {
   border: none;
 }
 
+.cross-image {
+  display: none;
+}
+
 .form-project__description {
   background-color: var(--white);
   resize: vertical;
@@ -124,6 +128,6 @@ body {
 
 @media (max-width: 1024px) {
   .container {
-    padding: 120px 16px 120px 16px;
+    padding: 120px 16px;
   }
 }
