@@ -1,0 +1,137 @@
+body {
+  background-color: var(--gray);
+}
+
+.container {
+  max-width: 1120px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 120px 0 120px 0;
+}
+
+.form-title {
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 62px;
+  margin-bottom: 24px;
+}
+
+.form-description {
+  color: var(--text-gray);
+  font-size: 20px;
+  line-height: 25px;
+  margin-bottom: 80px;
+}
+
+.form-contacts__title {
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 36px;
+  margin-bottom: 16px;
+}
+
+.form-contacts__items {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px 32px;
+  margin-bottom: 48px;
+}
+
+.form-input-box, .form-name, .form-mail, .form-phone-number, .form-company-name {
+  max-width: 544px;
+  width: 100%;
+  height: 58px;
+}
+
+.form-name, .form-mail, .form-phone-number, .form-company-name {
+  padding: 0 24px;
+  font-size: 16px;
+  line-height: 30px;
+}
+
+.form-input-box {
+  position: relative;
+}
+
+.form-star {
+  position: absolute;
+  top: 13px;
+  right: 24px;
+  width: 10px;
+  height: 30px;
+}
+
+.form-name::placeholder, .form-mail::placeholder, .form-phone-number::placeholder, .form-company-name::placeholder {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 30px;
+  color: var(--text-gray);
+}
+
+.form-project__title {
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 36px;
+  margin-bottom: 16px;
+}
+
+.form-project__select {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.form-check {
+  cursor: pointer;
+  color: var(--text-gray);
+  border: 1px solid var(--text-gray);
+  border-radius: 4px;
+  height: 40px;
+  padding: 8px 12px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.form-check.active {
+  background-color: var(--green);
+  color: var(--black);
+  border: none;
+}
+
+.form-project__description {
+  background-color: var(--white);
+  resize: vertical;
+  margin-bottom: 48px;
+  height: 120px;
+  width: 100%;
+  border: none;
+  color: var(--black);
+  font-size: 16px;
+  padding: 16px 0 0 24px;
+}
+
+.form-project__description::placeholder {
+  color: var(--text-gray);
+  font-size: 16px;
+}
+
+.form-button__wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.form-button {
+  width: 188px;
+  height: 56px;
+  background-color: var(--green);
+  border-radius: 4px;
+  padding: 15px 40px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+  cursor: pointer;
+  border: none;
+}
