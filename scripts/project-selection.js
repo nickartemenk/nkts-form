@@ -4,10 +4,10 @@ let selectedProject = null;
 
 formChecks.forEach((elem) =>{
   elem.addEventListener(`click`, (e) => {
-    const parent = e.target.tagName === `DIV` ? e.target : e.target.closest(`.form-check`);
+    const elem = e.target.tagName === `DIV` ? e.target : e.target.closest(`.form-check`);
 
-    if (parent.classList.contains('active')) {
-      parent.classList.remove('active');
+    if (elem.classList.contains('active')) {
+      elem.classList.remove('active');
       selectedProject = null;
     } else {
       formChecks.forEach((item) => {
