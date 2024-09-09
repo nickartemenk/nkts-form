@@ -3,9 +3,7 @@ const formChecks = document.querySelectorAll('.form-check');
 let selectedProject = null;
 
 formChecks.forEach((elem) =>{
-  elem.addEventListener(`click`, (e) => {
-    const elem = e.target.tagName === `DIV` ? e.target : e.target.closest(`.form-check`);
-
+  elem.addEventListener(`click`, () => {
     if (elem.classList.contains('active')) {
       elem.classList.remove('active');
       selectedProject = null;
