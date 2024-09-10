@@ -5,11 +5,14 @@ const validations = () => {
 
   let result = true;
 
-  if (formName.value === "") {
-    createError(formName);
-    result = false;
-  } else if (formName.value.trim().length <= 2) {
-    createError(formName);
+  const errorMessages = {
+    name: 'Имя не указано',
+    email: 'Неверный email',
+    phone: 'Неверный номер телефона'
+  };
+
+  if (formName.value.trim().length <= 2) {
+    createError(formName, errorMessages.name);
     result = false;
   } else {
     removeError(formName);
@@ -17,7 +20,7 @@ const validations = () => {
 
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   if (!emailRegex.test(formMail.value)) {
-    createErrorForEmail(formMail);
+    createError(formMail, errorMessages.email);
     result = false;
   } else {
     removeError(formMail);
@@ -25,7 +28,7 @@ const validations = () => {
 
   const phoneNumberRegex = /^[+() -]?(\d[\d ()-]*){10,14}$/;
   if (!phoneNumberRegex.test(formPhoneNumber.value)) {
-    createErrorForPhone(formPhoneNumber);
+    createError(formPhoneNumber, errorMessages.phone);
     result = false;
   } else {
     removeError(formPhoneNumber);
@@ -34,7 +37,7 @@ const validations = () => {
   return result;
 };
 
-const createError = (htmlElement) => {
+const createError = (htmlElement, errorMessage) => {
   const parent = htmlElement.parentNode;
   const currentErrorLabel = parent.querySelector('.error-label');
 
@@ -42,35 +45,7 @@ const createError = (htmlElement) => {
     parent.classList.add('error-label');
     const errorLabel = document.createElement('label');
     errorLabel.classList.add('error-label');
-    errorLabel.textContent = 'Имя не указанно';
-    parent.append(errorLabel);
-    htmlElement.classList.add('error');
-  }
-};
-
-const createErrorForEmail = (htmlElement) => {
-  const parent = htmlElement.parentNode;
-  const currentErrorLabel = parent.querySelector('.error-label');
-
-  if (!currentErrorLabel) {
-    parent.classList.add('error-label');
-    const errorLabel = document.createElement('label');
-    errorLabel.classList.add('error-label');
-    errorLabel.textContent = 'Неверный email';
-    parent.append(errorLabel);
-    htmlElement.classList.add('error');
-  }
-};
-
-const createErrorForPhone = (htmlElement) => {
-  const parent = htmlElement.parentNode;
-  const currentErrorLabel = parent.querySelector('.error-label');
-
-  if (!currentErrorLabel) {
-    parent.classList.add('error-label');
-    const errorLabel = document.createElement('label');
-    errorLabel.classList.add('error-label');
-    errorLabel.textContent = 'Неверный номер телефона';
+    errorLabel.textContent = errorMessage;
     parent.append(errorLabel);
     htmlElement.classList.add('error');
   }
