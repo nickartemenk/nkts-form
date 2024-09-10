@@ -41,6 +41,7 @@ body {
   max-width: 544px;
   width: 100%;
   height: 58px;
+  outline: none;
 }
 
 .form-name, .form-mail, .form-phone-number, .form-company-name {
@@ -51,14 +52,42 @@ body {
 
 .form-input-box {
   position: relative;
+  border: 1px solid var(--white);
+  border-radius: 4px;
 }
 
-.form-star {
+.form-input-box .form-star {
   position: absolute;
   top: 13px;
   right: 24px;
   width: 10px;
   height: 30px;
+}
+
+.form-input-box.error-label .form-star {
+  display: none;
+}
+
+.error-label {
+  color: var(--red);
+  font-weight: 600;
+}
+
+.form-input-box.error-label {
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.form-name.error, .form-mail.error, .form-phone-number.error {
+  margin-bottom: 4px;
+  border: 2px solid var(--red);
+  border-radius: 4px;
+  background-color: var(--red-shadow);
+}
+
+.form-name.error::placeholder, .form-phone-number.error::placeholder, .form-mail.error::placeholder {
+  color: var(--red);
+  font-weight: 600;
 }
 
 .form-name::placeholder, .form-mail::placeholder, .form-phone-number::placeholder, .form-company-name::placeholder {
