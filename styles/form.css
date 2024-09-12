@@ -1,3 +1,7 @@
+body {
+  background-color: var(--gray);
+}
+
 .container {
   max-width: 1120px;
   width: 100%;

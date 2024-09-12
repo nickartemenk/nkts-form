@@ -116,16 +116,15 @@ const clearFormFields = () =>  {
   });
 }
 
-document.querySelector('.form-wrapper').addEventListener('submit', async (e) => {
+const form = document.querySelector('.form-wrapper');
+  form.addEventListener('submit', async (e) => {
   e.preventDefault();
 
   if (validations()) {
-    console.log('Start');
 
-    const fullPageBlur = document.querySelector('.full-page-wrapper');
     const loader = document.querySelector('.loader');
 
-    fullPageBlur.classList.add('loader-blur');
+    form.classList.add('loader-blur');
     loader.classList.add('show');
 
     try {
@@ -134,10 +133,8 @@ document.querySelector('.form-wrapper').addEventListener('submit', async (e) => 
     } catch (error) {
       alert(`Ошибка при отправке данных`);
     } finally {
-      setTimeout(() => {
-        fullPageBlur.classList.remove('loader-blur');
+        form.classList.remove('loader-blur');
         loader.classList.remove('show');
-      }, 1500);
     }
     clearFormFields();
   }
