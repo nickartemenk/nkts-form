@@ -1,5 +1,6 @@
 .form-wrapper {
   position: relative;
+  background-color: var(--gray);
 }
 
 .form-wrapper.loader-blur {

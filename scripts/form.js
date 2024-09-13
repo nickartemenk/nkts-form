@@ -93,7 +93,7 @@ const getFormData = () => ({
 const postData = async () => {
   try {
     const formData = getFormData();
-    const request = await fetch('https://nkts-projects-be.onrender.com/api/projects',
+    const response = await fetch('https://nkts-projects-be.onrender.com/api/projects',
       {
         method: 'POST',
         headers: {
@@ -101,15 +101,14 @@ const postData = async () => {
         },
         body: JSON.stringify({data: formData}),
       });
-    return await request.json();
+    return await response.json();
   } catch (error) {
     throw new Error(`ERROR`);
   }
 };
 
 const clearFormFields = () =>  {
-  document.querySelectorAll('.form-name, .form-mail, .form-phone-number, .form-company-name').forEach(input => input.value = '');
-  document.querySelector('.form-project__description').value = '';
+  document.querySelectorAll('.form-name, .form-mail, .form-phone-number, .form-company-name, .form-project__description').forEach(input => input.value = '');
   selectedProject = null;
   formChecks.forEach((elem) => {
     elem.classList.remove('active');
@@ -135,7 +134,7 @@ const form = document.querySelector('.form-wrapper');
     } finally {
         form.classList.remove('loader-blur');
         loader.classList.remove('show');
+        clearFormFields();
     }
-    clearFormFields();
   }
 });
