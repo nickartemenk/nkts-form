@@ -107,6 +107,21 @@ const postData = async () => {
   }
 };
 
+const showServerError = () => {
+  const errorDiv = document.createElement('div');
+  errorDiv.className = 'server-error-message';
+  errorDiv.textContent = 'Упс... Что-то пошло не так. Попробуйте позже.';
+
+  const formWrapper = document.querySelector('.form-wrapper');
+  const existingError = formWrapper.querySelector('.server-error-message');
+
+  if (existingError) {
+    existingError.remove();
+  }
+
+  formWrapper.appendChild(errorDiv);
+};
+
 const clearFormFields = () =>  {
   document.querySelectorAll('.form-name, .form-mail, .form-phone-number, .form-company-name, .form-project__description').forEach(input => input.value = '');
   selectedProject = null;
@@ -122,19 +137,23 @@ const form = document.querySelector('.form-wrapper');
   if (validations()) {
 
     const loader = document.querySelector('.loader');
+    const formBlur = document.querySelector('.form-blur');
 
-    form.classList.add('loader-blur');
+    formBlur.classList.add('loader-blur');
     loader.classList.add('show');
 
     try {
       const resp = await postData();
-      console.log(resp);
-    } catch (error) {
-      alert(`Ошибка при отправке данных`);
+      clearFormFields();
+      const errorDiv = document.querySelector('.server-error-message');
+      if (errorDiv) {
+        errorDiv.remove();
+      }
+    } catch {
+      showServerError();
     } finally {
-        form.classList.remove('loader-blur');
+      formBlur.classList.remove('loader-blur');
         loader.classList.remove('show');
-        clearFormFields();
     }
   }
 });

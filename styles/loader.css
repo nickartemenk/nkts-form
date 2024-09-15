@@ -3,7 +3,7 @@
   background-color: var(--gray);
 }
 
-.form-wrapper.loader-blur {
+.form-blur.loader-blur {
   filter: blur(10px);
   z-index: 1;
 }
@@ -11,21 +11,23 @@
 .loader {
   display: none;
   position: absolute;
-  top: 600px;
+  top: 300px;
   left: 48%;
+  opacity: 0;
 }
 
 .loader.show {
   display: block;
   transform: translate(-50%, -50%);
-  z-index: 10;
   width: 58px;
   height: 58px;
   border: 6px solid var(--text-gray);
   border-bottom-color: transparent;
   border-radius: 50%;
   box-sizing: border-box;
+  opacity: 1;
   animation: rotation 1s linear infinite;
+  z-index: 10;
 }
 
 @keyframes rotation {
