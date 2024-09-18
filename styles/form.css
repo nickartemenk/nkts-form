@@ -182,17 +182,47 @@ body {
   font-size: 30px;
 }
 
+.modal-blackout {
+  display: none;
+  opacity: 0;
+}
+
+.modal-blackout.show {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
 .modal {
+  display: none;
+}
+
+.modal.show {
+  display: block;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  background-color: var(--white);
   width: 480px;
   height: 310px;
-  border: 1px solid transparent;
+  border: 16px solid transparent;
   border-radius: 16px;
+}
+
+.modal-close__cross-wrapper {
+  text-align: end;
+  height: 24px;
 }
 
 .modal-close__cross {
   cursor: pointer;
-  text-align: end;
-  height: 24px;
 }
 
 .modal-checkmark {
@@ -220,27 +250,13 @@ body {
   justify-content: center;
 }
 
-.modal-close-button {
+.form-button.modal-close-button {
   height: 48px;
-  background-color: unset;
-  border: 1px solid var(--text-gray);
   color: var(--black);
-  border-radius: 4px;
   padding: 12px 24px;
-  text-align: center;
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-family: "Mulish", sans-serif;
-}
-
-.modal-close-button:hover {
-  background-color: var(--green);
-  border: 1px solid transparent;
-  color: var(--black);
-  transition: all 0.3s ease;
 }
 
 @media (max-width: 1024px) {
