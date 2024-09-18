@@ -1,94 +1,152 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap"
-        rel="stylesheet">
-  <link rel="stylesheet" href="./styles/index.css"/>
-  <title>Form</title>
-  <script src="./scripts/form.js" defer></script>
-</head>
-<body>
-<header>
-  <div class="applications">
-    <a class="applications-item active" href="./">Создание заявки</a>
-    <a class="applications-item" href="./">Список заявок</a>
-  </div>
-</header>
-<section class="form container">
-  <form class="form-wrapper">
-    <div class="form-blur">
-    <h1 class="form-title">Заполните анкету, чтобы обсудить проект</h1>
-    <p class="form-description">Мы принимаем на себя обязательство о том, что коммерческая информация, полученная в
-      рамках подготовки и реализации проекта, является конфиденциальной и не подлежит разглашению или передаче третьим
-      лицам.</p>
-    <div class="form-contacts">
-      <h2 class="form-contacts__title">Ваши контакты</h2>
-      <div class="form-contacts__items">
-        <div class="form-input-box">
-          <input class="form-name" name="full-name" type="text" placeholder="User Name">
-          <svg class="form-star" width="9" height="8" viewBox="0 0 9 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M2.84 7.86L1.64 6.98L3.56 4.56L0.56 3.7L1.04 2.28L3.92 3.36L3.8 0.279999H5.3L5.18 3.36L8.1 2.28L8.54 3.7L5.58 4.54L7.48 6.98L6.28 7.86L4.56 5.26L2.84 7.86Z"
-              fill="#54CB4A"/>
-          </svg>
-        </div>
-        <div class="form-input-box">
-          <input class="form-mail" name="form-mail" type="email" placeholder="e-mail@mail.com">
-          <svg class="form-star" width="9" height="8" viewBox="0 0 9 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M2.84 7.86L1.64 6.98L3.56 4.56L0.56 3.7L1.04 2.28L3.92 3.36L3.8 0.279999H5.3L5.18 3.36L8.1 2.28L8.54 3.7L5.58 4.54L7.48 6.98L6.28 7.86L4.56 5.26L2.84 7.86Z"
-              fill="#54CB4A"/>
-          </svg>
-        </div>
-        <div class="form-input-box">
-          <input class="form-phone-number" name="form-number" type="text" placeholder="+37564 521 8755">
-        </div>
-        <div class="form-input-box">
-          <input class="form-company-name" name="form-company-name" type="text" placeholder="Company Name">
-        </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles/index.css" />
+    <title>Form</title>
+    <script src="./scripts/form.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div class="applications">
+        <a class="applications-item active" href="./">Создание заявки</a>
+        <a class="applications-item" href="./">Список заявок</a>
       </div>
-    </div>
-    <div class="form-project">
-      <div class="form-project__title">О проекте</div>
-      <div class="form-project__select">
-        <div class="form-check" data-value="MobileApp">
-          <span class="form-check-box">Мобильное приложение</span>
-          <img class="cross-image" src="./assets/cross.svg">
+    </header>
+    <section class="form container">
+      <form class="form-wrapper">
+        <div class="form-blur">
+          <h1 class="form-title">Заполните анкету, чтобы обсудить проект</h1>
+          <p class="form-description">
+            Мы принимаем на себя обязательство о том, что коммерческая
+            информация, полученная в рамках подготовки и реализации проекта,
+            является конфиденциальной и не подлежит разглашению или передаче
+            третьим лицам.
+          </p>
+          <div class="form-contacts">
+            <h2 class="form-contacts__title">Ваши контакты</h2>
+            <div class="form-contacts__items">
+              <div class="form-input-box">
+                <input
+                  class="form-name"
+                  name="full-name"
+                  type="text"
+                  placeholder="User Name"
+                />
+                <svg
+                  class="form-star"
+                  width="9"
+                  height="8"
+                  viewBox="0 0 9 8"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M2.84 7.86L1.64 6.98L3.56 4.56L0.56 3.7L1.04 2.28L3.92 3.36L3.8 0.279999H5.3L5.18 3.36L8.1 2.28L8.54 3.7L5.58 4.54L7.48 6.98L6.28 7.86L4.56 5.26L2.84 7.86Z"
+                    fill="#54CB4A"
+                  />
+                </svg>
+              </div>
+              <div class="form-input-box">
+                <input
+                  class="form-mail"
+                  name="form-mail"
+                  type="email"
+                  placeholder="e-mail@mail.com"
+                />
+                <svg
+                  class="form-star"
+                  width="9"
+                  height="8"
+                  viewBox="0 0 9 8"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M2.84 7.86L1.64 6.98L3.56 4.56L0.56 3.7L1.04 2.28L3.92 3.36L3.8 0.279999H5.3L5.18 3.36L8.1 2.28L8.54 3.7L5.58 4.54L7.48 6.98L6.28 7.86L4.56 5.26L2.84 7.86Z"
+                    fill="#54CB4A"
+                  />
+                </svg>
+              </div>
+              <div class="form-input-box">
+                <input
+                  class="form-phone-number"
+                  name="form-number"
+                  type="text"
+                  placeholder="+37564 521 8755"
+                />
+              </div>
+              <div class="form-input-box">
+                <input
+                  class="form-company-name"
+                  name="form-company-name"
+                  type="text"
+                  placeholder="Company Name"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="form-project">
+            <div class="form-project__title">О проекте</div>
+            <div class="form-project__select">
+              <div class="form-check" data-value="MobileApp">
+                <span class="form-check-box">Мобильное приложение</span>
+                <img class="cross-image" src="./assets/cross.svg" />
+              </div>
+              <div class="form-check" data-value="Website">
+                <span class="form-check-box">Сайт</span>
+                <img class="cross-image" src="./assets/cross.svg" />
+              </div>
+              <div class="form-check" data-value="WebApp">
+                <span class="form-check-box">Web приложение</span>
+                <img class="cross-image" src="./assets/cross.svg" />
+              </div>
+              <div class="form-check" data-value="UXUIDesign">
+                <span class="form-check-box">UX/UI дизайн</span>
+                <img class="cross-image" src="./assets/cross.svg" />
+              </div>
+              <div class="form-check" data-value="ChatBot">
+                <span class="form-check-box">Чат-бот</span>
+                <img class="cross-image" src="./assets/cross.svg" />
+              </div>
+              <div class="form-check" data-value="CRMSystem">
+                <span class="form-check-box">CRM система</span>
+                <img class="cross-image" src="./assets/cross.svg" />
+              </div>
+            </div>
+            <textarea
+              placeholder="Необходимо разработать мобильное приложение крипто-кошелек"
+              class="form-project__description"
+            ></textarea>
+            <div class="form-button__wrapper">
+              <button class="form-button">Отправить</button>
+            </div>
+          </div>
         </div>
-        <div class="form-check" data-value="Website">
-          <span class="form-check-box">Сайт</span>
-          <img class="cross-image" src="./assets/cross.svg">
-        </div>
-        <div class="form-check" data-value="WebApp">
-          <span class="form-check-box">Web приложение</span>
-          <img class="cross-image" src="./assets/cross.svg">
-        </div>
-        <div class="form-check" data-value="UXUIDesign">
-          <span class="form-check-box">UX/UI дизайн</span>
-          <img class="cross-image" src="./assets/cross.svg">
-        </div>
-        <div class="form-check" data-value="ChatBot">
-          <span class="form-check-box">Чат-бот</span>
-          <img class="cross-image" src="./assets/cross.svg">
-        </div>
-        <div class="form-check" data-value="CRMSystem">
-          <span class="form-check-box">CRM система</span>
-          <img class="cross-image" src="./assets/cross.svg">
-        </div>
-      </div>
-      <textarea placeholder="Необходимо разработать мобильное приложение крипто-кошелек"
-                class="form-project__description"></textarea>
-      <div class="form-button__wrapper">
-        <button class="form-button">Отправить</button>
-      </div>
-    </div>
-    </div>
-    <span class="loader"></span>
-  </form>
-</section>
-</body>
+        <span class="loader"></span>
+        <dialog class="modal">
+          <div class="modal-close__cross">
+            <img src="./assets/modal/cross.svg" />
+          </div>
+          <div class="modal-checkmark">
+            <img src="./assets/modal/checkmark.svg" />
+          </div>
+          <h2 class="modal-title">Ваша заявка успешно отправлена</h2>
+          <h3 class="modal-subtitle">
+            Менеджер AtlantSoftware свяжется с вами очень скоро!
+          </h3>
+          <div class="modal-close-button__wrapper">
+            <button class="modal-close-button">Закрыть</button>
+          </div>
+        </dialog>
+      </form>
+    </section>
+  </body>
 </html>
