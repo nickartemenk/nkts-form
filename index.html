@@ -9,8 +9,7 @@
         rel="stylesheet">
   <link rel="stylesheet" href="./styles/index.css"/>
   <title>Form</title>
-  <script src="./scripts/project-selection.js" defer></script>
-  <script src="./scripts/validation.js" defer></script>
+  <script src="./scripts/form.js" defer></script>
 </head>
 <body>
 <header>
@@ -21,6 +20,7 @@
 </header>
 <section class="form container">
   <form class="form-wrapper">
+    <div class="form-blur">
     <h1 class="form-title">Заполните анкету, чтобы обсудить проект</h1>
     <p class="form-description">Мы принимаем на себя обязательство о том, что коммерческая информация, полученная в
       рамках подготовки и реализации проекта, является конфиденциальной и не подлежит разглашению или передаче третьим
@@ -86,6 +86,8 @@
         <button class="form-button">Отправить</button>
       </div>
     </div>
+    </div>
+    <span class="loader"></span>
   </form>
 </section>
 </body>

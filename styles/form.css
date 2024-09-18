@@ -161,6 +161,13 @@ body {
   justify-content: flex-end;
 }
 
+.server-error-message {
+  color: var(--red);
+  font-weight: 600;
+  text-align: center;
+  font-size: 30px;
+}
+
 @media (max-width: 1024px) {
   .container {
     padding: 120px 16px;
