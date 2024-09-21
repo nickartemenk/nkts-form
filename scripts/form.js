@@ -45,10 +45,15 @@ const validations = () => {
     removeError(formMail);
   }
 
-  const phoneNumberRegex = /^[+() -]?(\d[\d ()-]*){10,14}$/;
-  if (!phoneNumberRegex.test(formPhoneNumber.value)) {
-    createError(formPhoneNumber, errorMessages.phone);
-    result = false;
+  const phoneNumberValue = formPhoneNumber.value;
+  if (phoneNumberValue.length > 0) {
+    const phoneNumberRegex = /^[+() -]?(\d[\d ()-]*){10,14}$/;
+    if (!phoneNumberRegex.test(phoneNumberValue)) {
+      createError(formPhoneNumber, errorMessages.phone);
+      result = false;
+    } else {
+      removeError(formPhoneNumber);
+    }
   } else {
     removeError(formPhoneNumber);
   }
