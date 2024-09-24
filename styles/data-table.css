@@ -1,0 +1,18 @@
+table.dataTable th.dt-type-numeric, table.dataTable th.dt-type-date,
+table.dataTable td.dt-type-numeric,
+table.dataTable td.dt-type-date, td:nth-child(5), td:nth-child(6) {
+  text-align: center;
+}
+
+.foot {
+    display: none;
+}
+
+.edit {
+    cursor: pointer;
+}
+
+.bi-pencil-square, .bi-cart2 {
+    width: 18px;
+    height: 18px;
+}
