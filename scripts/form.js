@@ -2,15 +2,15 @@ const formChecks = document.querySelectorAll('.form-check');
 
 let selectedProject = null;
 
-formChecks.forEach((elem) =>{
+formChecks.forEach(elem => {
   elem.addEventListener(`click`, () => {
     if (elem.classList.contains('active')) {
       elem.classList.remove('active');
       selectedProject = null;
     } else {
-      formChecks.forEach((item) => {
+      formChecks.forEach(item => {
         item.classList.remove(`active`);
-      })
+      });
       elem.classList.toggle('active');
       selectedProject = elem.dataset.value;
     }
@@ -45,10 +45,15 @@ const validations = () => {
     removeError(formMail);
   }
 
-  const phoneNumberRegex = /^[+() -]?(\d[\d ()-]*){10,14}$/;
-  if (!phoneNumberRegex.test(formPhoneNumber.value)) {
-    createError(formPhoneNumber, errorMessages.phone);
-    result = false;
+  const phoneNumberValue = formPhoneNumber.value;
+  if (phoneNumberValue.length > 0) {
+    const phoneNumberRegex = /^[+() -]?(\d[\d ()-]*){10,14}$/;
+    if (!phoneNumberRegex.test(phoneNumberValue)) {
+      createError(formPhoneNumber, errorMessages.phone);
+      result = false;
+    } else {
+      removeError(formPhoneNumber);
+    }
   } else {
     removeError(formPhoneNumber);
   }
@@ -70,7 +75,7 @@ const createError = (htmlElement, errorMessage) => {
   }
 };
 
-const removeError = (htmlElement) => {
+const removeError = htmlElement => {
   const parent = htmlElement.parentNode;
   const errorLabel = parent.querySelector('.error-label');
 
@@ -93,14 +98,16 @@ const getFormData = () => ({
 const postData = async () => {
   try {
     const formData = getFormData();
-    const response = await fetch('https://nkts-projects-be.onrender.com/api/projects',
+    const response = await fetch(
+      'https://nkts-projects-be.onrender.com/api/projects',
       {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json;charset=utf-8'
         },
-        body: JSON.stringify({data: formData}),
-      });
+        body: JSON.stringify({ data: formData })
+      }
+    );
     return await response.json();
   } catch (error) {
     throw new Error(`ERROR`);
@@ -122,20 +129,71 @@ const showServerError = () => {
   formWrapper.appendChild(errorDiv);
 };
 
-const clearFormFields = () =>  {
-  document.querySelectorAll('.form-name, .form-mail, .form-phone-number, .form-company-name, .form-project__description').forEach(input => input.value = '');
+const clearFormFields = () => {
+  document
+    .querySelectorAll(
+      '.form-name, .form-mail, .form-phone-number, .form-company-name, .form-project__description'
+    )
+    .forEach(input => (input.value = ''));
   selectedProject = null;
-  formChecks.forEach((elem) => {
+  formChecks.forEach(elem => {
     elem.classList.remove('active');
   });
-}
+};
+
+const showModalWindow = () => {
+  const modalWindow = document.querySelector('.modal');
+  const blackout = document.querySelector('.modal-blackout');
+
+  modalWindow.classList.add('show');
+  blackout.classList.add('show');
+
+  document.body.style.overflow = 'hidden';
+
+  document.addEventListener('click', event => {
+    if (
+      !modalWindow.contains(event.target) &&
+      !modalWindow
+        .querySelector('.modal-close-button')
+        .contains(event.target) &&
+      !modalWindow.querySelector('.modal-close__cross').contains(event.target)
+    ) {
+      closeModalWindow();
+    }
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      closeModalWindow();
+    }
+  });
+
+  document.querySelector('.modal-close-button').addEventListener('click', e => {
+    e.preventDefault();
+    closeModalWindow();
+  });
+  document.querySelector('.modal-close__cross').addEventListener('click', e => {
+    e.preventDefault();
+    closeModalWindow();
+  });
+};
+
+const closeModalWindow = () => {
+  const modalWindow = document.querySelector('.modal');
+  const blackout = document.querySelector('.modal-blackout');
+
+  blackout.classList.remove('show');
+
+  modalWindow.classList.remove('show');
+
+  document.body.style.overflow = '';
+};
 
 const form = document.querySelector('.form-wrapper');
-  form.addEventListener('submit', async (e) => {
+form.addEventListener('submit', async e => {
   e.preventDefault();
 
   if (validations()) {
-
     const loader = document.querySelector('.loader');
     const formBlur = document.querySelector('.form-blur');
 
@@ -144,16 +202,20 @@ const form = document.querySelector('.form-wrapper');
 
     try {
       const resp = await postData();
+      if (resp.error) {
+        throw new Error(`ERROR`);
+      }
       clearFormFields();
       const errorDiv = document.querySelector('.server-error-message');
       if (errorDiv) {
         errorDiv.remove();
       }
-    } catch {
+      showModalWindow();
+    } catch (Error) {
       showServerError();
     } finally {
       formBlur.classList.remove('loader-blur');
-        loader.classList.remove('show');
+      loader.classList.remove('show');
     }
   }
 });
