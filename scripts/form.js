@@ -141,7 +141,7 @@ const clearFormFields = () => {
   });
 };
 
-const showModalWindow = (callback) => {
+const showModalWindow = callback => {
   const modalWindow = document.querySelector('.modal');
   const blackout = document.querySelector('.modal-blackout');
 
@@ -153,7 +153,7 @@ const showModalWindow = (callback) => {
   document.addEventListener('click', event => {
     if (!modalWindow.contains(event.target)) {
       closeModalWindow();
-      callback(); 
+      callback();
     }
   });
 
