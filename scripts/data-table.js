@@ -35,6 +35,15 @@ const renderElement = array => {
 const initPage = async () => {
   const resp = await get();
 
+  const typeProject = {
+    Website: 'Веб-сайт',
+    MobileApp: 'Мобильное приложение',
+    WebApp: 'Веб-приложение',
+    UXUIDesign: 'UX/UI дизайн',
+    ChatBot: 'Чат-бот',
+    CRMSystem: 'CRM система'
+  };
+
   const newResp = resp.data.map(res => {
     return {
       id: res.id,
@@ -42,7 +51,7 @@ const initPage = async () => {
       email: res.attributes.email,
       phone: res.attributes.phone,
       company_name: res.attributes.phone,
-      type: res.attributes.type
+      type: typeProject[res.attributes.type]
     };
   });
 
