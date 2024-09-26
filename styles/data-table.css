@@ -1,0 +1,7 @@
+.edit {
+  cursor: pointer;
+}
+
+.table-sm > :not(caption) > * > * {
+  text-align: center;
+}

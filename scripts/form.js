@@ -141,7 +141,7 @@ const clearFormFields = () => {
   });
 };
 
-const showModalWindow = () => {
+const showModalWindow = callback => {
   const modalWindow = document.querySelector('.modal');
   const blackout = document.querySelector('.modal-blackout');
 
@@ -151,30 +151,28 @@ const showModalWindow = () => {
   document.body.style.overflow = 'hidden';
 
   document.addEventListener('click', event => {
-    if (
-      !modalWindow.contains(event.target) &&
-      !modalWindow
-        .querySelector('.modal-close-button')
-        .contains(event.target) &&
-      !modalWindow.querySelector('.modal-close__cross').contains(event.target)
-    ) {
+    if (!modalWindow.contains(event.target)) {
       closeModalWindow();
+      callback();
     }
   });
 
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape') {
       closeModalWindow();
+      callback();
     }
   });
 
   document.querySelector('.modal-close-button').addEventListener('click', e => {
     e.preventDefault();
     closeModalWindow();
+    callback();
   });
   document.querySelector('.modal-close__cross').addEventListener('click', e => {
     e.preventDefault();
     closeModalWindow();
+    callback();
   });
 };
 
@@ -210,7 +208,10 @@ form.addEventListener('submit', async e => {
       if (errorDiv) {
         errorDiv.remove();
       }
-      showModalWindow();
+      showModalWindow(() => {
+        closeModalWindow();
+        window.location.href = './data-table.html';
+      });
     } catch (Error) {
       showServerError();
     } finally {

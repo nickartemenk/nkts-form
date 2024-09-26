@@ -34,6 +34,6 @@ header {
   transition: transform .2s;
 }
 
-.active::before {
+.page-active::before {
   transform: scaleX(1);
 }
