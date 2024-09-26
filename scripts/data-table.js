@@ -7,8 +7,9 @@ const get = async () => {
 };
 
 const renderElement = array => {
+  const table = document.getElementById('table-body');
+
   for (let i = 0; i < array.length; i++) {
-    console.log(array[i]);
     const row = document.createElement('tr');
     row.innerHTML = `
       <th scope="row">${array[i].id}</th>
@@ -23,7 +24,6 @@ const renderElement = array => {
 </svg></td>
       `;
 
-    const table = document.getElementById('table-body');
     table.appendChild(row);
 
     row.querySelector('.edit').addEventListener('click', () => {
@@ -35,7 +35,7 @@ const renderElement = array => {
 const initPage = async () => {
   const resp = await get();
 
-  const typeProject = {
+  const TYPE_PROJECT = {
     Website: 'Веб-сайт',
     MobileApp: 'Мобильное приложение',
     WebApp: 'Веб-приложение',
@@ -51,7 +51,7 @@ const initPage = async () => {
       email: res.attributes.email,
       phone: res.attributes.phone,
       company_name: res.attributes.phone,
-      type: typeProject[res.attributes.type]
+      type: TYPE_PROJECT[res.attributes.type]
     };
   });
 
