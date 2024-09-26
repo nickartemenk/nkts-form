@@ -27,7 +27,10 @@ const renderElement = array => {
     table.appendChild(row);
 
     row.querySelector('.edit').addEventListener('click', () => {
-      window.location.href = './edit-page.html';
+      row.setAttribute('data-id', array[i].id); 
+      row.setAttribute('data-project', JSON.stringify(array[i]));
+      const projectData = JSON.parse(row.getAttribute('data-project'));
+      window.location.href = './edit-page.html?id=' + projectData.id;
     });
   }
 };
@@ -50,7 +53,7 @@ const initPage = async () => {
       name: res.attributes.name,
       email: res.attributes.email,
       phone: res.attributes.phone,
-      company_name: res.attributes.phone,
+      company_name: res.attributes.company_name,
       type: TYPE_PROJECT[res.attributes.type]
     };
   });

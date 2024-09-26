@@ -1,0 +1,23 @@
+.form-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 300px;
+}
+
+.form-button.button-save, .form-button.button-delete {
+    color: var(--black);
+}
+
+.form-button.button-save:hover {
+    background-color: var(--green);
+    border: 1px solid transparent;
+    color: var(--black);
+    transition: all 0.3s ease;
+}
+
+.form-button.button-delete:hover {
+    background-color: red;
+    border: 1px solid transparent;
+    color: var(--black);
+    transition: all 0.3s ease;
+}
