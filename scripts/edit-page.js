@@ -133,15 +133,13 @@ const closeModalWindowDelete = () => {
   modalWindow.classList.remove('show');
 
   document.body.style.overflow = '';
-  console.log('modal-delete')
 };
 
 const deleteProjectBtn = document.querySelector('.button-delete');
 
 deleteProjectBtn.addEventListener('click', async (e) => {
-  console.log('button-delete')
 e.preventDefault();
-
+e.stopPropagation();
 showModalWindowDelete();
 });
 
@@ -149,7 +147,6 @@ const modalCloseButtonYes = document.querySelector('.modal-close-button-yes');
 const modalCloseButtonNo = document.querySelector('.modal-close-button-no');
 
 modalCloseButtonYes.addEventListener('click', async (e) => {
-  console.log('closeModalWindowDelete')
   e.preventDefault();
   await deleteProject();
   closeModalWindowDelete();
@@ -157,7 +154,6 @@ modalCloseButtonYes.addEventListener('click', async (e) => {
 });
 
 modalCloseButtonNo.addEventListener('click', (e) => {
-  console.log('closeModalWindowDelete')
     e.preventDefault();
     closeModalWindowDelete();
 });
@@ -232,11 +228,17 @@ const showEditSuccessModal = (callback) => {
         }
     });
 
-    document.querySelector('.modal-close__cross').addEventListener('click', e => {
+    modalWindow.querySelector('.modal-close__cross').addEventListener('click', e => {
         e.preventDefault();
         closeModalWindowEdit();
         callback();
     });
+
+    modalWindow.querySelector('.modal-close-button').addEventListener('click', e => {
+      e.preventDefault();
+      closeModalWindowEdit();
+      callback();
+  });
 };
 
 const closeModalWindowEdit = () => {
