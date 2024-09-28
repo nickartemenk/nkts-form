@@ -1,0 +1,60 @@
+.form-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 300px;
+}
+
+.form-button.button-save, .form-button.button-delete {
+    color: var(--black);
+}
+
+.form-button.button-save:hover {
+    background-color: var(--green);
+    border: 1px solid transparent;
+    color: var(--black);
+    transition: all 0.3s ease;
+}
+
+.form-button.button-delete:hover {
+    background-color: red;
+    border: 1px solid transparent;
+    color: var(--black);
+    transition: all 0.3s ease;
+}
+
+.modal-delete, .modal-edit {
+    display: none;
+  }
+  
+.modal-delete.show, .modal-edit.show {
+display: block;
+position: absolute;
+transform: translate(-50%, -50%);
+top: 50%;
+left: 50%;
+background-color: var(--white);
+width: 480px;
+height: 310px;
+border: 16px solid transparent;
+border-radius: 16px;
+}
+
+.modal-close-button__wrapper-delete {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 60px;
+  }
+
+  .form-button.modal-close-button-yes, .form-button.modal-close-button-no {
+    height: 48px;
+    color: var(--black);
+    padding: 12px 24px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .form-button.modal-close-button-no:hover {
+    background-color: red;
+  }
