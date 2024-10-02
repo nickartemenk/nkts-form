@@ -5,3 +5,17 @@
 .table-sm > :not(caption) > * > * {
   text-align: center;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.page-prev, .page-next {
+  position: relative;
+  display: block;
+  padding: 5px 10px;
+  color: var(--black);
+  background-color: var(--white);
+  cursor: pointer;
+}
