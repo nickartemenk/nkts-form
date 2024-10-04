@@ -73,28 +73,6 @@ const initPage = async () => {
     renderElement(projects);
   };
 
-  // const updatePagination = async () => {
-  //   const projects = await fetchProjects(currentPage);
-  //   await renderCurrentPage(projects);
-  
-  //   const handlePaginationClick = async (page) => {
-  //     currentPage = page;
-  //     await updatePagination();
-  //   };
-  
-  //   const paginationButtons = document.querySelectorAll('.page-item');
-    
-  //   paginationButtons.forEach(button => {
-  //     button.addEventListener('click', async () => {
-  //       const pageNumber = parseInt(button.querySelector('.page-link').textContent);
-  //       await handlePaginationClick(pageNumber);
-  //     });
-  //   });
-
-  //   localStorage.setItem('currentPage', currentPage);
-    
-  // };
-
   const updatePagination = async () => {
     const projects = await fetchProjects(currentPage);
     await renderCurrentPage(projects);
@@ -127,15 +105,6 @@ const initPage = async () => {
     nextBtn.innerHTML = '<a>Next</a>';
     paginationContainer.appendChild(nextBtn);
 
-    // prevBtn.disabled = currentPage === 1;
-    // nextBtn.disabled = currentPage === totalPages;
-
-    // paginationContainer.addEventListener('click', async (e) => {
-    //   const pageNumber = parseInt(e.target.textContent);
-    //   currentPage = pageNumber;
-    //   await updatePagination();
-    // });
-
     const pageItemButtons = document.querySelectorAll('.page-item');
   pageItemButtons.forEach(button => {
     button.addEventListener('click', async (e) => {
@@ -148,8 +117,6 @@ const initPage = async () => {
 
     prevBtn.addEventListener('click',async  () => {
       if (currentPage > 1) {
-        console.log(currentPage);
-        
         currentPage--;
         await updatePagination();
       }
@@ -163,9 +130,6 @@ const initPage = async () => {
     });
 
     localStorage.setItem('currentPage', currentPage);
-
-    console.log('prevbtn', prevBtn);
-    
   };
 
   const storedPage = parseInt(localStorage.getItem('currentPage') || '1');
@@ -176,80 +140,3 @@ const initPage = async () => {
 };
 
 window.addEventListener('load', initPage);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const initPage = async () => {
-//   const resp = await get();
-
-//   const TYPE_PROJECT = {
-//     Website: 'Веб-сайт',
-//     MobileApp: 'Мобильное приложение',
-//     WebApp: 'Веб-приложение',
-//     UXUIDesign: 'UX/UI дизайн',
-//     ChatBot: 'Чат-бот',
-//     CRMSystem: 'CRM система'
-//   };
-
-//   const newResp = resp.data.map(res => {
-//     return {
-//       id: res.id,
-//       name: res.attributes.name,
-//       email: res.attributes.email,
-//       phone: res.attributes.phone,
-//       company_name: res.attributes.company_name,
-//       type: TYPE_PROJECT[res.attributes.type]
-//     };
-//   });
-
-
-
-
-
-// let currentPage = 1;
-//   const itemsPerPage = 1;
-//   const totalPages = newResp.length / itemsPerPage;
-
-//   // renderElement(newResp[currentPage - 1]);
-
-//   const prevButton = document.getElementById('prev-btn');
-//   const nextButton = document.getElementById('next-btn');
-
-//   prevButton.addEventListener('click', () => {
-//     if (currentPage > 1) {
-//       currentPage--;
-//       updatePagination(currentPage);
-//     }
-//   });
-
-//   nextButton.addEventListener('click', () => {
-//     if (currentPage < totalPages) {
-//       currentPage++;
-//       updatePagination(currentPage);
-//     }
-//   });
-
-//   function updatePagination(page) {
-//     const tableBody = document.getElementById('table-body');
-//     tableBody.innerHTML = ''; 
-
-//     if (page <= totalPages && page >= 1) {
-//       renderElement(newResp[page - 1]);
-//     }
-
-//     prevButton.disabled = currentPage === 1;
-//     nextButton.disabled = currentPage === totalPages;
-//   }
