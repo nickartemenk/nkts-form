@@ -73,54 +73,106 @@ const initPage = async () => {
     renderElement(projects);
   };
 
+  // const updatePagination = async () => {
+  //   const projects = await fetchProjects(currentPage);
+  //   await renderCurrentPage(projects);
+  
+  //   const handlePaginationClick = async (page) => {
+  //     currentPage = page;
+  //     await updatePagination();
+  //   };
+  
+  //   const paginationButtons = document.querySelectorAll('.page-item');
+    
+  //   paginationButtons.forEach(button => {
+  //     button.addEventListener('click', async () => {
+  //       const pageNumber = parseInt(button.querySelector('.page-link').textContent);
+  //       await handlePaginationClick(pageNumber);
+  //     });
+  //   });
+
+  //   localStorage.setItem('currentPage', currentPage);
+    
+  // };
+
   const updatePagination = async () => {
     const projects = await fetchProjects(currentPage);
     await renderCurrentPage(projects);
-  
-    const handlePaginationClick = async (page) => {
-      currentPage = page;
-      await updatePagination();
-    };
-  
-    const paginationButtons = document.querySelectorAll('.page-item');
+
+    const totalProjects = resp.data.length;
+    const totalPages = totalProjects / itemsOnPage;
     
-    paginationButtons.forEach(button => {
-      button.addEventListener('click', async () => {
-        const pageNumber = parseInt(button.querySelector('.page-link').textContent);
-        await handlePaginationClick(pageNumber);
-      });
+    const paginationContainer = document.querySelector('.pagination');
+    paginationContainer.innerHTML = '';
+
+    const prevBtn = document.createElement('li');
+    prevBtn.className = 'page-prev';
+    prevBtn.innerHTML = '<a>Previous</a>';
+    paginationContainer.appendChild(prevBtn);
+
+    const firstPageBtn = document.createElement('li');
+    firstPageBtn.className = 'page-item';
+    firstPageBtn.innerHTML = '<a class="page-link" href="#1">1</a>';
+    paginationContainer.appendChild(firstPageBtn);
+
+    for (let i = 2; i <= totalPages; i++) {
+      const pageBtn = document.createElement('li');
+      pageBtn.className = 'page-item';
+      pageBtn.innerHTML = `<a class="page-link" href="#${i}">${i}</a>`;
+      paginationContainer.appendChild(pageBtn);
+    }
+
+    const nextBtn = document.createElement('li');
+    nextBtn.className = 'page-next';
+    nextBtn.innerHTML = '<a>Next</a>';
+    paginationContainer.appendChild(nextBtn);
+
+    // prevBtn.disabled = currentPage === 1;
+    // nextBtn.disabled = currentPage === totalPages;
+
+    // paginationContainer.addEventListener('click', async (e) => {
+    //   const pageNumber = parseInt(e.target.textContent);
+    //   currentPage = pageNumber;
+    //   await updatePagination();
+    // });
+
+    const pageItemButtons = document.querySelectorAll('.page-item');
+  pageItemButtons.forEach(button => {
+    button.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const pageNumber = parseInt(e.target.textContent);
+        currentPage = pageNumber;
+        await updatePagination();
+    });
+  });
+
+    prevBtn.addEventListener('click',async  () => {
+      if (currentPage > 1) {
+        console.log(currentPage);
+        
+        currentPage--;
+        await updatePagination();
+      }
+    });
+    
+    nextBtn.addEventListener('click',async  () => {
+      if (currentPage * itemsOnPage < resp.data.length) {
+        currentPage++;
+        await updatePagination();
+      }
     });
 
     localStorage.setItem('currentPage', currentPage);
+
+    console.log('prevbtn', prevBtn);
     
   };
-
-  const prevBtn = document.querySelector('.page-prev');
-  const nextBtn = document.querySelector('.page-next');
 
   const storedPage = parseInt(localStorage.getItem('currentPage') || '1');
 
   currentPage = storedPage > 0 ? storedPage : 1;
 
-  prevBtn.addEventListener('click',  () => {
-    if (currentPage > 1) {
-      console.log(currentPage);
-      
-      currentPage--;
-      updatePagination();
-    }
-  });
-  
-  nextBtn.addEventListener('click',  () => {
-    if (currentPage * itemsOnPage < resp.data.length) {
-      currentPage++;
-      updatePagination();
-    }
-  });
-
   updatePagination();
-
-  
 };
 
 window.addEventListener('load', initPage);
